@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Listas as rádios</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th hx-get="{% url 'radio:order-radios-by-id' %}"
+                    hx-target="#radioTbody"
+                    hx-indicator=".htmx-indicator">
+                    ID
+                </th>
+                <th hx-get="{% url 'radio:order-radios-by-name' %}"
+                    hx-target="#radioTbody">
+                    Nome
+                </th>
+                <th hx-get="{% url 'radio:order-radios-by-dial' %}"
+                    hx-target="#radioTbody">
+                    Dial
+                </th>
+                <th>Cidade
+                    <select name="id_city" id=""
+                            hx-get="{% url 'radio:list-radios' %}"
+                            hx-target="#radioTbody">
+                        <option value="">------</option>
+                        {% for city in cities %}
+                            <option value="{{ city.id }}"
+                                    {% if id_city == city.id %}selected{% endif %}
+                            >{{ city }}</option>
+                        {% endfor %}
+                    </select>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="radioTbody">
+            {% include "./radio_table.html" %}
+        </tbody>
+    </table>
+    <div class="viraliz"></div>
+{% endblock content %}

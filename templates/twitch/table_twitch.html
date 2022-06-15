@@ -1,0 +1,18 @@
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Jogo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td>{{ object.name }}</td>
+                    <td>{{ object.game.name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

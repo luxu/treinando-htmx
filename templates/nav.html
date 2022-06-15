@@ -1,0 +1,25 @@
+
+{% block nav %}
+<div class="row my-3">
+    <div class="col">
+        <a href="{% url 'index' %}">
+            <h3><i class="fas fa-tasks"></i>Home</h3>
+        </a>
+    </div>
+    <div class="col">
+        <a href="{% url 'tasks:tasklist-list' %}">
+            <h3><i class="fas fa-tasks"></i> Task Lists</h3>
+        </a>
+    </div>
+    <div class="col">
+        <a href="{% url 'radio:list-radios' %}">
+            <h3><i class="fas fa-tasks"></i>Radio Lists</h3>
+        </a>
+    </div>
+    <div class="col">
+        <a href="{% url 'twitch:list-twitch' %}">
+            <h3><i class="fas fa-tasks"></i>Twitch Lists</h3>
+        </a>
+    </div>
+</div>
+{% endblock nav %}

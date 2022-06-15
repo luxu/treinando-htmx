@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Lista de Streamers</h3>
+    <div class="card row">
+        <form
+            hx-trigger="keyup delay:100ms"
+            hx-get="{% url 'twitch:list-twitch' %}"
+            hx-swap="outherHTML"
+            hx-target="#tasklist-table">
+            <input type="text" placeholder="Search" class="form-control" name="search">
+        </form>
+    </div>
+    <div id="tasklist-table">
+        {% include './table_twitch.html' %}
+    </div>
+{% endblock content %}
+
+{% block extrascripts %}
+<script type="text/javascript">
+  document.addEventListener("redirect", evt => {
+    console.log(evt);
+    window.location.href = evt.detail.url;
+  });
+  htmx.logAll();
+</script>
+{% endblock %}
